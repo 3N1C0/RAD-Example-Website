@@ -79,7 +79,7 @@ export default function Home() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#d98b83]">
             01 / About
           </p>
-          <div className="grid max-w-3xl gap-6" sm:grid-cols-1>
+          <div className="max-w-3xl">
             <h2 className="text-4xl font-semibold leading-tight sm:text-5xl">
               We are a learning enviroment for students to explore!
             </h2>
@@ -89,7 +89,8 @@ export default function Home() {
               focused on AI autonomous robotics and drones. With over $5000+ dollars raised so far for our club's work, we 
               are committed to lowering the barrier of entry for students to gain hands-on experience in a 
               fast-paced collaborative environment. The experience gained from working in our 
-              club directly translate over to a professional setting, with over half of our members receiving internship positions related to their fields.  
+              club directly translate over to a professional setting, with over 
+              half of our members receiving internship positions related to their fields.  
             </p>
           </div>
         </div>
