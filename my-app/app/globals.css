@@ -17,3 +17,36 @@ body {
   color: var(--foreground);
   font-family: var(--font-fontana), sans-serif;
 }
+
+.carousel-photo-slide-right {
+  animation: carousel-photo-slide-right 450ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.carousel-photo-slide-left {
+  animation: carousel-photo-slide-left 450ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes carousel-photo-slide-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes carousel-photo-slide-left {
+  from {
+    transform: translateX(50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-photo-slide-right,
+  .carousel-photo-slide-left {
+    animation: none;
+  }
+}

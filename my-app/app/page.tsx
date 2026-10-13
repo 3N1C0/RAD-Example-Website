@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import AboutCarousel from "./about-carousel";
 
 export default function Home() {
   return (
@@ -9,8 +10,8 @@ export default function Home() {
         className="relative isolate grid min-h-svh place-items-center overflow-hidden bg-[#1A1A1A] px-5 py-12"
       >
         <Image
-          src="/drone-hero.jpg"
-          alt="A drone flying above a mountain range"
+          src="/landscape%20photo.jfif"
+          alt="Landscape photograph"
           fill
           priority
           sizes="100vw"
@@ -23,9 +24,9 @@ export default function Home() {
 
         <div className="relative z-10 flex flex-col items-center text-center">
           <h1 className="sr-only">Robotics and Drones Club</h1>
-          <div className="relative aspect-[3/4] w-[min(72vw,22rem)]">
+          <div className="relative aspect-square w-[min(75.6vw,23.1rem)]">
             <Image
-              src="/Media.jfif"
+              src="/RAD%20logo%20with%20text.png"
               alt="Robotics and Drones Club logo"
               fill
               priority
@@ -41,17 +42,6 @@ export default function Home() {
           </Link>
         </div>
 
-        <p className="absolute bottom-4 right-5 z-10 text-[10px] text-white/75 sm:right-8">
-          Photo by{" "}
-          <a
-            href="https://unsplash.com/photos/white-quadcopter-drone-flying-near-snow-mountain-during-daytime-ZlkRrzJl20Q"
-            target="_blank"
-            rel="noreferrer"
-            className="underline underline-offset-2"
-          >
-            Iewek Gnos / Unsplash
-          </a>
-        </p>
       </section>
 
       <header className="sticky top-0 z-50 border-y border-white/10 bg-[#1A1A1A]/95 backdrop-blur-md">
@@ -75,10 +65,11 @@ export default function Home() {
       </header>
 
       <section id="about-us" className="scroll-mt-20 px-5 py-24 sm:px-8 md:py-32">
-        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#d98b83]">
+        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-2 md:gap-x-16 md:gap-y-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#d98b83] md:col-span-2">
             01 / About
           </p>
+          <AboutCarousel />
           <div className="max-w-3xl">
             <h2 className="text-4xl font-semibold leading-tight sm:text-5xl">
               We are a learning enviroment for students to explore!
