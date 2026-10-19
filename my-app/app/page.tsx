@@ -60,7 +60,7 @@ export default function Home() {
           <AboutCarousel />
           <div className="max-w-3xl">
             <h2 className="text-4xl font-semibold leading-tight sm:text-5xl">
-              We are a learning enviroment for students to explore!
+              We are a fast-paced learning environment that builds real projects with real impact.
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">
               Established in 2025, the Redlands Robotics and Drone Club is currently the fastest growing organization on campus,
