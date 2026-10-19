@@ -1,0 +1,9 @@
+# The Next.js app lives in my-app/, not at the repo root.
+[build]
+  base = "my-app"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Next.js 16 needs Node 20.9 or newer.
+  NODE_VERSION = "22"
