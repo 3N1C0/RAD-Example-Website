@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import AboutCarousel from "./about-carousel";
+import Gallery from "./gallery";
+import ProjectCard from "./project-card";
+import { featuredProjects } from "./projects-data";
+import SiteContact from "./site-contact";
+import SiteHeader from "./site-header";
 
 export default function Home() {
   return (
@@ -10,16 +15,17 @@ export default function Home() {
         className="relative isolate grid min-h-svh place-items-center overflow-hidden bg-[#1A1A1A] px-5 py-12"
       >
         <Image
-          src="/landscape%20photo.jfif"
-          alt="Landscape photograph"
+          src="/backdrop.jpg"
+          alt="Club members watching a drone demonstration"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          quality={85}
+          className="object-cover object-[center_25%]"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-linear-to-b from-black/20 via-black/35 to-black/70"
+          className="absolute inset-0 bg-linear-to-b from-black/55 via-black/50 to-black/75"
         />
 
         <div className="relative z-10 flex flex-col items-center text-center">
@@ -31,7 +37,7 @@ export default function Home() {
               fill
               priority
               sizes="(max-width: 640px) 72vw, 352px"
-              className="object-contain"
+              className="object-contain drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)]"
             />
           </div>
           <Link
@@ -44,25 +50,7 @@ export default function Home() {
 
       </section>
 
-      <header className="sticky top-0 z-50 border-y border-white/10 bg-[#1A1A1A]/95 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4 sm:px-8">
-          <Link href="#home" className="flex items-center gap-3" aria-label="Back to home">
-            <span className="flex size-9 items-center justify-center rounded-sm bg-[#5B0D0D] text-xs font-bold text-white">
-              R&amp;D
-            </span>
-            <span className="text-sm font-semibold uppercase tracking-[0.12em]">
-              Robotics and Drones
-            </span>
-          </Link>
-
-          <nav aria-label="Main navigation" className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-            <Link href="#about-us" className="transition-colors hover:text-[#d98b83]">About</Link>
-            <Link href="#projects" className="transition-colors hover:text-[#d98b83]">Projects</Link>
-            <Link href="#members" className="transition-colors hover:text-[#d98b83]">Members</Link>
-            <Link href="#contact-us" className="transition-colors hover:text-[#d98b83]">Contact</Link>
-          </nav>
-        </div>
-      </header>
+      <SiteHeader />
 
       <section id="about-us" className="scroll-mt-20 px-5 py-24 sm:px-8 md:py-32">
         <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-2 md:gap-x-16 md:gap-y-8">
@@ -75,13 +63,14 @@ export default function Home() {
               We are a learning enviroment for students to explore!
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">
-              The Redlands Robotics and Drone Club is currently the fastest growing organization on campus,
-              as we have roughly 15 active members spanning from GIS to engineering, all working on cutting edge projects 
-              focused on AI autonomous robotics and drones. With over $5000+ dollars raised so far for our club's work, we 
+              Established in 2025, the Redlands Robotics and Drone Club is currently the fastest growing organization on campus,
+              as we have 20 active members spanning from GIS to engineering, all working on cutting edge projects 
+              focused on AI autonomous robotics and drones. With over $5000+ dollars raised so far for our club&apos;s work, we 
               are committed to lowering the barrier of entry for students to gain hands-on experience in a 
               fast-paced collaborative environment. The experience gained from working in our 
               club directly translate over to a professional setting, with over 
-              half of our members receiving internship positions related to their fields.  
+              half of our members receiving internship positions related to their fields. This year, we are looking to scale
+              even further.
             </p>
           </div>
         </div>
@@ -96,28 +85,16 @@ export default function Home() {
             From first sketch to first flight.
           </h2>
           <div className="mt-14 grid gap-x-10 md:grid-cols-3">
-            <article className="border-t border-black/20 py-6">
-              <p className="text-sm font-medium text-[#7d211e]">01</p>
-              <h3 className="mt-8 text-xl font-semibold">Airframe design</h3>
-              <p className="mt-3 text-sm leading-6 text-black/65">
-                Explore structures, materials, and the choices that shape a flying platform.
-              </p>
-            </article>
-            <article className="border-t border-black/20 py-6">
-              <p className="text-sm font-medium text-[#7d211e]">02</p>
-              <h3 className="mt-8 text-xl font-semibold">Autonomous flight</h3>
-              <p className="mt-3 text-sm leading-6 text-black/65">
-                Bring control systems and software together to make flight more capable.
-              </p>
-            </article>
-            <article className="border-t border-black/20 py-6">
-              <p className="text-sm font-medium text-[#7d211e]">03</p>
-              <h3 className="mt-8 text-xl font-semibold">Aerial imaging</h3>
-              <p className="mt-3 text-sm leading-6 text-black/65">
-                Put cameras and sensors to work collecting a new view of the world.
-              </p>
-            </article>
+            {featuredProjects.map((project, index) => (
+              <ProjectCard key={project.title} project={project} index={index} />
+            ))}
           </div>
+          <Link
+            href="/projects"
+            className="mt-10 inline-block border-b border-black/40 pb-2 text-sm font-medium transition-colors hover:border-black"
+          >
+            See all projects →
+          </Link>
         </div>
       </section>
 
@@ -134,26 +111,29 @@ export default function Home() {
               Bring a question, a half-built idea, or simply an interest in how things fly. There is
               room to learn by doing.
             </p>
+            <Link
+              href="/members"
+              className="mt-10 inline-block border-b border-white/60 pb-2 text-sm font-medium transition-colors hover:border-white"
+            >
+              Meet the team →
+            </Link>
           </div>
         </div>
       </section>
 
-      <section id="contact-us" className="scroll-mt-20 bg-[#5B0D0D] px-5 py-20 sm:px-8 md:py-28">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
-              04 / Contact
-            </p>
-            <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">Let’s make something fly.</h2>
-          </div>
-          <Link
-            href="#home"
-            className="w-fit border-b border-white/60 pb-2 text-sm font-medium transition-colors hover:border-white"
-          >
-            Back to top
-          </Link>
+      <section id="gallery" className="scroll-mt-20 bg-white px-5 py-24 text-[#1A1A1A] sm:px-8 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7d211e]">
+            05 / Gallery
+          </p>
+          <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">
+            Proof of work.
+          </h2>
+          <Gallery />
         </div>
       </section>
+
+      <SiteContact eyebrow="06 / Contact" backToTopHref="#home" />
     </main>
   );
 }

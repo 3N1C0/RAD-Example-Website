@@ -66,6 +66,7 @@ export default function AboutCarousel() {
         alt={previousIndex === null ? activePhoto.alt : photos[previousIndex].alt}
         fill
         sizes="(max-width: 768px) 100vw, 50vw"
+        quality={85}
         className="object-cover"
       />
       {previousIndex !== null && slideDirection !== null && (
@@ -75,6 +76,7 @@ export default function AboutCarousel() {
           alt={activePhoto.alt}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
+          quality={85}
           onAnimationEnd={() => setPreviousIndex(null)}
           className={`object-cover carousel-photo-slide-${slideDirection}`}
         />
