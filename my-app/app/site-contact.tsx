@@ -18,6 +18,17 @@ function InstagramIcon() {
   );
 }
 
+function EmailIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-5">
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="m3 6 9 7 9-7" />
+    </svg>
+  );
+}
+
+const clubEmail = "redlandsroboticsanddroneclub@gmail.com";
+
 const socialLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/redlands-robotics-and-drone/", Icon: LinkedInIcon },
   { label: "Instagram", href: "https://www.instagram.com/radredlands/", Icon: InstagramIcon },
@@ -39,6 +50,15 @@ export default function SiteContact({
           </p>
           <h2 className="mt-5 text-4xl font-semibold sm:text-5xl">Let’s make something fly.</h2>
           <ul className="mt-8 flex flex-wrap gap-3">
+            <li>
+              <a
+                href={`mailto:${clubEmail}`}
+                className="flex items-center gap-2.5 rounded-sm border border-white/30 px-4 py-2.5 text-sm font-medium transition-colors hover:border-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                <EmailIcon />
+                <span className="break-all">{clubEmail}</span>
+              </a>
+            </li>
             {socialLinks.map(({ label, href, Icon }) => (
               <li key={label}>
                 <a
